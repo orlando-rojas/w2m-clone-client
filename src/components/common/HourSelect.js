@@ -1,8 +1,13 @@
 import { Form } from "react-bootstrap";
 
-export default function HourSelect({ reference, name }) {
+export default function HourSelect({ reference, name, defaultValue }) {
   return (
-    <Form.Control as="select" ref={reference} name={name}>
+    <Form.Control
+      as="select"
+      ref={reference}
+      name={name}
+      defaultValue={defaultValue}
+    >
       <option value={0}>midnight</option>
       <option value={1}>1 am</option>
       <option value={2}>2 am</option>
@@ -27,7 +32,6 @@ export default function HourSelect({ reference, name }) {
       <option value={21}>9 pm</option>
       <option value={22}>10 pm</option>
       <option value={23}>11 pm</option>
-      <option value={0}>midnight</option>
     </Form.Control>
   );
 }

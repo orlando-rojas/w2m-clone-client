@@ -12,7 +12,7 @@ export default function Event() {
       <Row>
         <Col>
           <div>
-            <h1>Event Name</h1>
+            <h1>Event's Name</h1>
             <p className="w-75 p3">
               To invite people to this event, you can email them, send them a
               Facebook message, or just direct them to

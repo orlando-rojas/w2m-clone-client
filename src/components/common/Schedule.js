@@ -18,10 +18,12 @@ export default function Schedule({ startDate, minTime, maxTime }) {
       maxTime={maxTime}
       hourlyChunks={2}
       onChange={handleChange}
-      dateFormat={"MMM D dddd"}
+      dateFormat={"MMM D ddd"}
       timeFormat={"h:mm a"}
       unselectedColor={"#FDDEDE"}
       selectedColor={"#339900"}
+      columnGap={"2px"}
+      rowGap={"1px"}
     />
   );
 }

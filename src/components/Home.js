@@ -5,10 +5,13 @@ import * as yup from "yup";
 import HourSelect from "./common/HourSelect";
 import MultipleCalendar from "./common/MultipleCalendar";
 import TimeZoneSelect from "./common/TimeZoneSelect";
+import { useHistory } from "react-router";
 
 export default function Home() {
-  const [selectedDates, setSelectedDates] = React.useState(new Date());
+  const [selectedDates, setSelectedDates] = React.useState([]);
   const [disabled, setDisabled] = React.useState(false);
+
+  const history = useHistory();
 
   const schema = yup.object().shape({
     name: yup.string().required(),
@@ -19,21 +22,22 @@ export default function Home() {
     reValidateMode: "onSubmit",
   });
 
-  async function saveEvent(data) {
+  async function createEvent(data) {
     setDisabled(true);
     try {
       console.log(data);
-      setDisabled(false);
+      history.push("/event");
     } catch (error) {
+      setDisabled(false);
       console.error(error);
     }
   }
 
-  console.log(selectedDates);
+  console.log("selected dates", selectedDates);
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit(saveEvent)} autoComplete="off" noValidate>
+      <Form onSubmit={handleSubmit(createEvent)} autoComplete="off" noValidate>
         <Row>
           <Col>
             <h3>What dates might work?</h3>
@@ -69,7 +73,11 @@ export default function Home() {
                 No earlier than:
               </Form.Label>
               <Col sm="4">
-                <HourSelect reference={register} name={"minTime"} />
+                <HourSelect
+                  reference={register}
+                  name={"minTime"}
+                  defaultValue={9}
+                />
               </Col>
             </Form.Group>
             <Form.Group
@@ -81,7 +89,11 @@ export default function Home() {
                 No later than:
               </Form.Label>
               <Col sm="4">
-                <HourSelect reference={register} name={"maxTime"} />
+                <HourSelect
+                  reference={register}
+                  name={"maxTime"}
+                  defaultValue={20}
+                />
               </Col>
             </Form.Group>
             <Form.Group

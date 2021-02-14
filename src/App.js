@@ -1,9 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import About from "./components/About";
-import Event from "./components/Event";
-import Home from "./components/Home";
-import Layout from "./components/Layout";
+import Layout from "./components/layout/";
+import { About, Event, Home } from "./pages/";
 
 export default function App() {
   return (

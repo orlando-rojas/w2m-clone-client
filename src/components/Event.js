@@ -5,20 +5,26 @@ import LoginForm from "./common/LoginForm";
 import Schedule from "./common/Schedule";
 import TimeZoneSelect from "./common/TimeZoneSelect";
 
+function AvailabilityContainer({ children }) {
+  return (
+    <div className="d-flex flex-column align-items-center pb-3">{children}</div>
+  );
+}
+
 export default function Event() {
   const [userLogged, setUserLogged] = React.useState(false);
   return (
     <Container fluid>
       <Row>
         <Col>
-          <div>
+          <AvailabilityContainer>
             <h1>Event's Name</h1>
-            <p className="w-75 p3">
+            <p>
               To invite people to this event, you can email them, send them a
               Facebook message, or just direct them to
               https://www.when2meet.com/?11044027-dahsX
             </p>
-          </div>
+          </AvailabilityContainer>
           <Form.Group as={Row} controlId="formPlaintextEmail" className="mt-4">
             <Form.Label column sm="3">
               Your Time Zone:
@@ -29,20 +35,25 @@ export default function Event() {
           </Form.Group>
           {userLogged ? (
             <>
-              <div className="d-flex flex-column align-items-center pb-3">
+              <AvailabilityContainer>
                 <h3>User's availability</h3>
                 <div className="d-flex align-items-center">
                   Unavailable <Square />
                   Available <Square available />
                 </div>
-              </div>
+              </AvailabilityContainer>
               <Schedule />
             </>
           ) : (
             <LoginForm setUserLogged={setUserLogged} />
           )}
         </Col>
-        <Col></Col>
+        <Col>
+          <AvailabilityContainer className="ptt-5">
+            <h3>Group's availability</h3>
+            <p>Mouseover the calendar to see who's available</p>
+          </AvailabilityContainer>
+        </Col>
       </Row>
     </Container>
   );

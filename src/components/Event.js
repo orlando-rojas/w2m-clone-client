@@ -4,6 +4,7 @@ import styled from "styled-components";
 import LoginForm from "./common/LoginForm";
 import Schedule from "./common/Schedule";
 import TimeZoneSelect from "./common/TimeZoneSelect";
+import GoogleCalendar from "./GoogleCalendar";
 
 function AvailabilityContainer({ children }) {
   return (
@@ -53,6 +54,7 @@ export default function Event() {
             <h3>Group's availability</h3>
             <p>Mouseover the calendar to see who's available</p>
           </AvailabilityContainer>
+          <GoogleCalendar />
         </Col>
       </Row>
     </Container>
